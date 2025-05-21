@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
@@ -16,14 +14,68 @@
     </style>
 <body>
     
-
-
-<main b-4dpnitiqc3><article class="content px-0" b-4dpnitiqc3><iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" width="960" height="540" src="https://www.youtube.com/embed/r3ppKW_8KHE?autoplay=1&amp;mute=1" frameborder="0" loading="lazy"></iframe>
-    <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; min-width: 400px; gap: 0;">
-        <div style="position: relative; width: 320px; height: 180px; font-size: 0;"><iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" width="320" height="180" src="https://www.youtube.com/embed/yz59jEcAT2Y?autoplay=1&amp;mute=1" frameborder="0" loading="lazy"></iframe></div>
-        <div style="position: relative; width: 320px; height: 180px; font-size: 0;"><iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" width="320" height="180" src="https://www.youtube.com/embed/Q8jEQ5SVwpM?autoplay=1&amp;mute=1" frameborder="0" loading="lazy"></iframe></div>
-        <div style="position: relative; width: 320px; height: 180px; font-size: 0;"><iframe allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen" width="320" height="180" src="https://www.youtube.com/embed/DZoDjYrBoVs?autoplay=1&amp;mute=1" frameborder="0" loading="lazy"></iframe></div>
-    </div>
+<main b-4dpnitiqc3><article class="content px-0" b-4dpnitiqc3>
+    <div id="mainVideo"></div>
+    <div id="videoGrid" style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%; min-width: 400px; gap: 0;"></div>
 </article></main>
+
+
+
+<script>
+
+    // 비디오 ID 목록
+    const videos = {
+        main: 'EmGn9ST-mG0', // 메인 비디오 ID
+        grid: [
+            'idejgUT5mSY',
+            'OUtVcOiqcuY',
+            'GNWvJwNGjWU',
+            'kJDYGEplg98',
+            '1fuXbw-08PA',
+            'l_w9hGrY4rg',
+            'uiXEAYiSGFM',
+            'SEJeP3tso2U',
+            '1xi0E2sT1p4',
+            'g_8BT-0vVzI',
+            'KARGlqeppFs',
+            'K7WcsN0F61Y',
+            '72quq_nOAP8',
+            '649QoveaRjM',
+        ]
+    };
+    
+    // 메인 비디오 생성
+    document.getElementById('mainVideo').innerHTML = createYouTubeIframe(videos.main, 960, 540);
+    
+    // 그리드 비디오 생성
+    const gridContainer = document.getElementById('videoGrid');
+    videos.grid.forEach(videoId => {
+        const videoDiv = document.createElement('div');
+        videoDiv.style.position = 'relative';
+        videoDiv.style.width = '320px';
+        videoDiv.style.height = '180px';
+        videoDiv.style.fontSize = '0';
+        videoDiv.innerHTML = createYouTubeIframe(videoId, 320, 180);
+        gridContainer.appendChild(videoDiv);
+    });
+    
+    // YouTube iframe 생성 함수
+    function createYouTubeIframe(videoId, width, height) {
+        return `<iframe 
+            allowfullscreen="allowfullscreen" 
+            mozallowfullscreen="mozallowfullscreen" 
+            msallowfullscreen="msallowfullscreen" 
+            oallowfullscreen="oallowfullscreen" 
+            webkitallowfullscreen="webkitallowfullscreen" 
+            width="${width}" 
+            height="${height}" 
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1" 
+            frameborder="0" 
+            loading="lazy">
+        </iframe>`;
+    }
+</script>
+</body>
+</html>
 
 
